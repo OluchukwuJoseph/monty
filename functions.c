@@ -104,6 +104,12 @@ int compare_strings(char *string, char *target, int tolerance)
 	return (j);
 }
 
+/**
+ * find_command - Locates the corresponding function for a given command.
+ * @command: A pointer to a string representing the command to be found.
+ * Return: A function pointer to the identified command function.
+ * If the command is not recognized, returns NULL.
+ */
 void (*find_command(char *command))(stack_t **stack, unsigned int line_number)
 {
 	char *command_copy = strdup(command);
@@ -126,6 +132,11 @@ void (*find_command(char *command))(stack_t **stack, unsigned int line_number)
 	return (NULL);
 }
 
+/**
+ * free_linked_list - Frees the memory occupied by a linked list.
+ * @stack: A pointer to the head of the linked list to be freed.
+ * Return: Nothing
+ */
 void free_linked_list(stack_t *stack)
 {
 	stack_t *temp;
@@ -138,3 +149,45 @@ void free_linked_list(stack_t *stack)
 		temp = stack;
 	}
 }
+
+/**
+ * extract_characters_after_push - Extracts characters from the input
+ * string after a specified target substring.
+ * @input: String from which characters will be extracted.
+ * @target: target substring after which characters will be extracted.
+ * Return: A string containing characters after the target substring.
+ * Return NULL If memory allocation fails.
+ * Return NULL if non-numeric character is found after push
+ */
+char *extract_characters_after_push(char *string, char *target, size_t line_n)
+{
+	int i = strlen(target);
+	int j, length = 0;
+	char *new_string = NULL;
+
+	for (; string[i] != '\0'; i++)
+	{
+		/*Check if the character is not between 1 and 9*/
+		if (string[i] >= '0' && string[i] <= '9')
+			length++;
+		else
+		{
+			fprintf(stderr, "L%lu: usage: push integer\n", line_n);
+			return (NULL);
+		}
+	}
+
+	new_string = (char *)malloc(sizeof(char) * (length + 1));
+	if (new_string == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		return (NULL);
+	}
+	i = strlen(target);
+	/*Copy characters from the input string to the new string.*/
+	for (j = 0; string[i] != '\0'; j++, i++)
+		new_string[j] = string[i];
+	new_string[j] = '\0';
+	return (new_string);
+}
+

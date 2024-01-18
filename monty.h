@@ -45,5 +45,6 @@ void (*find_command(char *command))(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void free_linked_list(stack_t *stack);
+char *extract_characters_after_push(char *input, char *target, size_t line_n);
 
 #endif

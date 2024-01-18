@@ -1,5 +1,14 @@
 #include "monty.h"
 
+/**
+ * main - The main function for a Monty interpreter
+ * that reads and executes Monty bytecode from a file.
+ * @ac: The number of command-line arguments.
+ * @av: An array of pointers to strings representing the command-line arguments
+ * Return: 0 on successful execution.
+ * Otherwise return 1
+ */
+int main(int ac, char **av);
 int main(int ac, char **av)
 {
 	FILE *file;
@@ -44,10 +53,12 @@ int main(int ac, char **av)
 		action.f(&stack, line_number);
 		if (error == 1)
 		{
+			free(action.opcode);
 			free(command);
 			free(line_content);
 			if (stack != NULL)
 				free_linked_list(stack);
+			fclose(file);
 			exit(error);
 		}
 		error = 0;
