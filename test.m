@@ -1,3 +1,3 @@
-push 78$
-push yd$
+push 1$
 pall
+push a$
