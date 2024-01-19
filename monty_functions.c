@@ -77,20 +77,20 @@ void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
-	if (stack == NULL)
+	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%lu: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		error = 1;
 	}
 	else
 	{
-		temp = head;
-		head = head->next;
+		temp = *stack;
+		*stack = (*stack)->next;
 		free(temp);
 	}
 }
 
-void nop(__atrribute__((unused))stack_t **stack, __atrribute__((unused))unsigned int line_number)
+void nop(__attribute__((unused))stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
 	
 }
