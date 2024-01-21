@@ -97,6 +97,28 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 }
 
+
+void swap(stack_t **stack, unsigned int line_number)
+{
+        if (*stack == NULL)
+        {
+                fprintf(stderr, "L<%u>: can't swap, stack too short", line_number);
+                exit (EXIT_FAILURE);
+        }
+        else
+        {
+                 stack_t *temp = (*stack)->prev;
+                 temp->prev->next = *stack;
+                 (*stack)->next->prev = temp;
+                 temp->next = (*stack)->next;
+                 (*stack)->prev = temp->prev;
+                 temp->prev = *stack;
+                 (*stack)->next = temp;
+        }
+}
+
+
+
 /**
  * nop - Does nothing
  * @stack: A pointer to the head of the stack.
