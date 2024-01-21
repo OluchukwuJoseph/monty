@@ -37,7 +37,7 @@ void push(stack_t **stack, unsigned int line_number)
 	result = compare_strings(action.opcode, "push", 1);
 	if (result == 0)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
 		error = 1;
 	}
 	else
@@ -85,7 +85,7 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L<%u>: can't pop an empty stack\n", line_number);
 		error = 1;
 	}
 	else
@@ -100,24 +100,37 @@ void pop(stack_t **stack, unsigned int line_number)
 
 void swap(stack_t **stack, unsigned int line_number)
 {
-        if (*stack == NULL)
-        {
-                fprintf(stderr, "L<%u>: can't swap, stack too short", line_number);
-                exit (EXIT_FAILURE);
-        }
-        else
-        {
-                 stack_t *temp = (*stack)->prev;
-                 temp->prev->next = *stack;
-                 (*stack)->next->prev = temp;
-                 temp->next = (*stack)->next;
-                 (*stack)->prev = temp->prev;
-                 temp->prev = *stack;
-                 (*stack)->next = temp;
-        }
+	stack_t *temp = NULL;
+	int length_of_stack = stack_length(*stack);
+
+	if (length_of_stack < 2)
+	{
+		fprintf(stderr, "L<%u>: can't swap, stack too short\n",
+				line_number);
+		/*main function will check the value of error and*/
+		/* exit with failure if error is 1*/
+		error = 1;
+	}
+	else
+	{
+		/*set temp to the next node (node 2)*/
+		temp = (*stack)->next;
+		/*set stack to temp (node 2)*/
+		*stack = temp;
+		/*set temp to node 1*/
+		temp = temp->prev;
+		/*set node 1's prev to node 2*/
+		/*This is where the swapping takes place*/
+		temp->prev = *stack;
+		/*set node 1 next to node 2 next*/
+		temp->next = (*stack)->next;
+		/*set node 2 next to node 1*/
+		(*stack)->next = temp;
+		/*set node 2 prev to NULL since*/
+		/*node 2 is now the head of the stack*/
+		(*stack)->prev = NULL;
+	}
 }
-
-
 
 /**
  * nop - Does nothing

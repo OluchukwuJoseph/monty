@@ -43,7 +43,7 @@ int main(int ac, char **av)
 		action.f = find_command(command);
 		if (error == 1)
 		{
-			fprintf(stderr, "L%lu: unknown instruction %s\n", line_number, command);
+			fprintf(stderr, "L<%lu>: unknown instruction %s\n", line_number, command);
 			free(command);
 			free(line_content);
 			if (stack != NULL)

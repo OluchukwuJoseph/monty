@@ -35,7 +35,7 @@ void add(stack_t **stack, unsigned int line_number)
 
 	if (length_of_stack < 2)
 	{
-		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L<%u>: can't add, stack too short\n", line_number);
 		error = 1;
 	}
 	else

@@ -198,7 +198,7 @@ char *extract_characters_after_push(char *string, char *target, size_t line_n)
 			length++;
 		else
 		{
-			fprintf(stderr, "L%lu: usage: push integer\n", line_n);
+			fprintf(stderr, "L<%lu>: usage: push integer\n", line_n);
 			return (NULL);
 		}
 	}
