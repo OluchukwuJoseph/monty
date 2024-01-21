@@ -74,7 +74,7 @@ void push(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * push - Pops an integer oot of the stack.
+ * pop - Pops an integer oot of the stack.
  * @stack: A pointer to the head of the stack.
  * @line_number: Line number.
  * Return: Nothing
@@ -102,7 +102,7 @@ void pop(stack_t **stack, unsigned int line_number)
  * @line_number: Line number.
  * Return: Nothing
  */
-void nop(__attribute__((unused))stack_t **stack, __attribute__((unused))unsigned int line_number)
+void nop(__attribute__((unused))stack_t **stack,
+		__attribute__((unused))unsigned int line_number)
 {
-	
 }

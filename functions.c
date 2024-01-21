@@ -1,7 +1,7 @@
 #include "monty.h"
 
-int error = 0;
 instruction_t action;
+int error = 0;
 
 /**
  * ruc - This function creates a new string by removing unwanted characters
@@ -65,8 +65,8 @@ char *ruc(char *string, char *unwanted_characters)
 
 
 /**
- * _strcom - This function compares two strings and determines their equality
- * or partial match based on the specified tolerance level.
+ * compare_strings - This function compares two strings and determines their
+ * equality or partial match based on the specified tolerance level.
  * @string: Pointer to the first string for comparison
  * @target: Pointer to the second string for comparison
  * @tolerance: Tolerance level for string comparison
@@ -81,8 +81,10 @@ int compare_strings(char *string, char *target, int tolerance)
 
 	if (strlen(string) != strlen(target) && tolerance == 0)
 		return (-1);
-
 	length1 = strlen(string);
+	if (length1 == 0)
+		return (-1);
+
 	for (i = 0; i < length1; i++)
 	{
 		if (string[i] != target[i])
@@ -163,8 +165,9 @@ void free_linked_list(stack_t *stack)
 /**
  * extract_characters_after_push - Extracts characters from the input
  * string after a specified target substring.
- * @input: String from which characters will be extracted.
+ * @string: String from which characters will be extracted.
  * @target: target substring after which characters will be extracted.
+ * @line_n: Line Number
  * Return: A string containing characters after the target substring.
  * Return NULL If memory allocation fails.
  * Return NULL if non-numeric character is found after push
@@ -178,7 +181,10 @@ char *extract_characters_after_push(char *string, char *target, size_t line_n)
 	for (; string[i] != '\0'; i++)
 	{
 		/*Check if the character is not between 1 and 9*/
-		if (string[i] >= '0' && string[i] <= '9')
+		if ((string[i] >= '0' && string[i] <= '9')
+				|| (string[i] == '-' &&
+					(string[i + 1] >= '0' &&
+					 string[i + 1] <= '9')))
 			length++;
 		else
 		{

@@ -19,7 +19,7 @@ int main(int ac, char **av)
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
-		exit (1);
+		exit(1);
 	}
 	file = fopen(av[1], "r");
 	if (file == NULL)
@@ -27,7 +27,7 @@ int main(int ac, char **av)
 		fprintf(stderr, "Error: can't open file %s\n", av[1]);
 		exit(1);
 	}
-	while(1)
+	while (1)
 	{
 		length = len = 0;
 		length = getline(&line_content, &len, file);
@@ -38,7 +38,7 @@ int main(int ac, char **av)
 		if (command == NULL)
 		{
 			free(line_content);
-			exit (1);
+			exit(1);
 		}
 		action.f = find_command(command);
 		if (error == 1)
