@@ -98,6 +98,14 @@ void pop(stack_t **stack, unsigned int line_number)
 }
 
 
+/**
+ * swap -  swaps the top two elements of the stack.
+ * @stack: A pointer to the head of the stack.
+ * @line_number: Line number.
+ * Return: Nothing.
+ */
+
+
 void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL;
@@ -131,6 +139,30 @@ void swap(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = NULL;
 	}
 }
+
+/**
+ * pint - prints the value at the top of the stack, followed by a new line.
+ * @stack: A pointer to the head of the stack.
+ * @line_number: Line number.
+ * Return: Nothing
+ */
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L<%u>: can't pint, stack empty", line_number);
+		error = 1;
+	}
+	else
+	{
+		stack_t *temp;
+
+		temp = *stack;
+		printf("%d\n", temp->n);
+	}
+}
+
 
 /**
  * nop - Does nothing
