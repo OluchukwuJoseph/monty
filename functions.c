@@ -112,6 +112,7 @@ int compare_strings(char *string, char *target, int tolerance)
  * Return: A function pointer to the identified command function.
  * If the command is not recognized, returns NULL.
  */
+void (*find_command(char *command))(stack_t **stack, unsigned int line_number);
 void (*find_command(char *command))(stack_t **stack, unsigned int line_number)
 {
 	char *command_copy = strdup(command);
@@ -203,7 +204,7 @@ char *extract_characters_after_push(char *string, char *target, size_t line_n)
 			length++;
 		else
 		{
-			fprintf(stderr, "L<%lu>: usage: push integer\n", line_n);
+			fprintf(stderr, "L%lu: usage: push integer\n", line_n);
 			return (NULL);
 		}
 	}

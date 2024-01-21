@@ -37,7 +37,7 @@ void push(stack_t **stack, unsigned int line_number)
 	result = compare_strings(action.opcode, "push", 1);
 	if (result == 0)
 	{
-		fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		error = 1;
 	}
 	else
@@ -85,7 +85,7 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L<%u>: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		error = 1;
 	}
 	else
@@ -104,8 +104,6 @@ void pop(stack_t **stack, unsigned int line_number)
  * @line_number: Line number.
  * Return: Nothing.
  */
-
-
 void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL;
@@ -113,7 +111,7 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	if (length_of_stack < 2)
 	{
-		fprintf(stderr, "L<%u>: can't swap, stack too short\n",
+		fprintf(stderr, "L%u: can't swap, stack too short\n",
 				line_number);
 		/*main function will check the value of error and*/
 		/* exit with failure if error is 1*/
@@ -146,31 +144,18 @@ void swap(stack_t **stack, unsigned int line_number)
  * @line_number: Line number.
  * Return: Nothing
  */
-
 void pint(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp;
+
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L<%u>: can't pint, stack empty", line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		error = 1;
 	}
 	else
 	{
-		stack_t *temp;
-
 		temp = *stack;
 		printf("%d\n", temp->n);
 	}
-}
-
-
-/**
- * nop - Does nothing
- * @stack: A pointer to the head of the stack.
- * @line_number: Line number.
- * Return: Nothing
- */
-void nop(__attribute__((unused))stack_t **stack,
-		__attribute__((unused))unsigned int line_number)
-{
 }
