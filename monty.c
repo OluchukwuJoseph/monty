@@ -19,13 +19,13 @@ int main(int ac, char **av)
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	file = fopen(av[1], "r");
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: can't open file %s\n", av[1]);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	while (1)
 	{
@@ -38,7 +38,7 @@ int main(int ac, char **av)
 		if (command == NULL)
 		{
 			free(line_content);
-			exit(1);
+			exit(EXIT_FAILURE);
 		}
 		action.f = find_command(command);
 		if (error == 1)
@@ -48,7 +48,7 @@ int main(int ac, char **av)
 			free(line_content);
 			if (stack != NULL)
 				free_linked_list(stack);
-			exit(error);
+			exit(EXIT_FAILURE);
 		}
 		action.f(&stack, line_number);
 		if (error == 1)
@@ -59,7 +59,7 @@ int main(int ac, char **av)
 			if (stack != NULL)
 				free_linked_list(stack);
 			fclose(file);
-			exit(error);
+			exit(EXIT_FAILURE);
 		}
 		error = 0;
 		line_number++;

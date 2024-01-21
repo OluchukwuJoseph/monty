@@ -47,5 +47,7 @@ void pall(stack_t **stack, unsigned int line_number);
 void free_linked_list(stack_t *stack);
 char *extract_characters_after_push(char *input, char *target, size_t line_n);
 void pop(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
+int stack_length(stack_t *stack);
 #endif

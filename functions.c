@@ -131,6 +131,11 @@ void (*find_command(char *command))(stack_t **stack, unsigned int line_number)
 		action.opcode = command_copy;
 		return (&pop);
 	}
+	else if (compare_strings(command_copy, "add", 0) == 0)
+	{
+		action.opcode = command_copy;
+		return (&add);
+	}
 	else if (compare_strings(command_copy, "nop", 0) == 0)
 	{
 		action.opcode = command_copy;
