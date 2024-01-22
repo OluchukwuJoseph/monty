@@ -54,7 +54,9 @@ void swap(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
-/*Used -div for division since div is already defined in stdlib.h*/
-void _div(stack_t **stack, unsigned int line_number);
+/*Used my_div for division since div is already defined in stdlib.h*/
 void mod(stack_t **stack, unsigned int line_number);
+void my_div(stack_t **stack, unsigned int line_number);
+
+>>>>>>> 1f06b156cf1334ca3c1b525f909bc8d1e1255709
 #endif

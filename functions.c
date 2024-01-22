@@ -152,6 +152,7 @@ void (*find_command(char *command))(stack_t **stack, unsigned int line_number)
 		action.opcode = command_copy;
 		return (&pint);
 	}
+<<<<<<< HEAD
 	else if (compare_strings(command_copy, "sub", 0) == 0)
 	{
 		action.opcode = command_copy;
@@ -172,6 +173,18 @@ void (*find_command(char *command))(stack_t **stack, unsigned int line_number)
 		action.opcode = command_copy;
 		return (&mod);
 	}
+=======
+	else if (compare_strings(command_copy, "mod", 0) == 0)
+        {
+                action.opcode = command_copy;
+                return (&mod);
+        }
+	else if (compare_strings(command_copy, "my_div", 0) == 0)
+        {
+                action.opcode = command_copy;
+                return (&my_div);
+        }
+>>>>>>> 1f06b156cf1334ca3c1b525f909bc8d1e1255709
 	else
 	{
 		free(command_copy);
