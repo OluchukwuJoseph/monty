@@ -59,7 +59,7 @@ void nop(__attribute__((unused))stack_t **stack,
 {
 }
 
-/*
+/**
  * sub - subtracts the top element of the stack from the
  * second top element of the stack.
  * @stack: A pointer to the head of a stack
@@ -86,7 +86,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	}
 }
 
-/*
+/**
  * mul - multiplies the second top element of the stack
  * with the top element of the stack.
  * @stack: A pointer to the head of a stack
