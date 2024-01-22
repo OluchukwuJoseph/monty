@@ -58,5 +58,4 @@ void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void my_div(stack_t **stack, unsigned int line_number);
 
->>>>>>> 1f06b156cf1334ca3c1b525f909bc8d1e1255709
 #endif
