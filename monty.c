@@ -34,6 +34,11 @@ int main(int ac, char **av)
 		if (length == -1)
 			break;
 		line_content[length - 1] = '\0';
+		if (line_content[0] == '#')
+		{
+			free(line_content);
+			continue;
+		}
 		command = ruc(line_content, " $\n");
 		if (command == NULL)
 		{
