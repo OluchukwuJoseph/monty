@@ -52,4 +52,7 @@ void nop(stack_t **stack, unsigned int line_number);
 int stack_length(stack_t *stack);
 void swap(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+void my_div(stack_t **stack, unsigned int line_number);
+
 #endif
