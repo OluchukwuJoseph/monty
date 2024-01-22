@@ -1,4 +1,12 @@
-push 1$
+push 13$
+push 4$
+push 8
 pall
-swap
+add
+pall
+push 5
+sub
+pall
+push 8
+div
 pall
